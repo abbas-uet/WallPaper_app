@@ -10,6 +10,7 @@ import { StyledChart } from './components/chart';
 
 export default function App() {
   return (
+
     <ThemeProvider>
       <ScrollToTop />
       <StyledChart />
