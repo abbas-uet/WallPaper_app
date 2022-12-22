@@ -1,4 +1,4 @@
-import {Navigate, useRoutes} from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
@@ -9,15 +9,17 @@ import Page404 from './pages/Page404';
 
 // ----------------------------------------------------------------------
 
-
 export default function Router() {
   const routes = useRoutes([
     {
-      path: '/home',
+      path: '/wallpapers',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/home/wallpapers" />, index: true },
-        { path: 'wallpapers', element: <BlogPage /> },
+        { element: <Navigate to="/wallpapers/all" />, index: true },
+        { path: 'all', element: <BlogPage pName={'All Wallpapers'} /> },
+        { path: 'footballers', element: <BlogPage pName={'Footballer Wallpapers'} /> },
+        { path: 'cricketers', element: <BlogPage pName={'Cricketer Wallpapers'} /> },
+        { path: 'actors', element: <BlogPage pName={'Actors Wallpapers'} /> },
       ],
     },
     {

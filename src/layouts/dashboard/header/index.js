@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
 // @mui
-import {styled} from '@mui/material/styles';
-import {AppBar, Box, IconButton, Stack, Toolbar} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { AppBar, Box, IconButton, Stack, Toolbar } from '@mui/material';
 // utils
-import {bgBlur} from '../../../utils/cssStyles';
+import { bgBlur } from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/iconify';
 //
 import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
+import Nav from '../nav';
+import Logo from '../../../components/logo';
 
 // ----------------------------------------------------------------------
 
@@ -54,19 +56,21 @@ export default function Header({ onOpenNav }) {
         >
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
-
-
-        <Searchbar />
-          <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
+          <Logo />
+        </Box>
+        <Box sx={{ flexGrow: 1 }} />
+        <Nav />
+        <Box sx={{ flexGrow: 1 }} />
         <Stack
           direction="row"
           alignItems="center"
           spacing={{
-            xs: 0.5,
-            sm: 1,
+            xs: 2,
+            sm: 3,
           }}
         >
-
+          <Searchbar />
           <AccountPopover />
         </Stack>
       </StyledToolbar>
