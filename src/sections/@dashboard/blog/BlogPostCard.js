@@ -62,8 +62,6 @@ export default function BlogPostCard({ post, index }) {
   const latestPost = index === 1 || index === 2;
 
   const POST_INFO = [
-    { number: comment, icon: 'eva:message-circle-fill' },
-    { number: view, icon: 'eva:eye-fill' },
     { number: share, icon: 'eva:share-fill' },
   ];
 
@@ -97,24 +95,10 @@ export default function BlogPostCard({ post, index }) {
             sx={{
               width: 80,
               height: 36,
-              zIndex: 9,
               bottom: -15,
               position: 'absolute',
               color: 'background.paper',
               ...((latestPostLarge || latestPost) && { display: 'none' }),
-            }}
-          />
-          <StyledAvatar
-            alt={author.name}
-            src={author.avatarUrl}
-            sx={{
-              ...((latestPostLarge || latestPost) && {
-                zIndex: 9,
-                top: 24,
-                left: 24,
-                width: 40,
-                height: 40,
-              }),
             }}
           />
 

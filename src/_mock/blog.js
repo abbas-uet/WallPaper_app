@@ -34,8 +34,7 @@ const posts = [...Array(23)].map((_, index) => ({
   cover: `/assets/images/covers/cover_${index + 1}.jpg`,
   title: POST_TITLES[index + 1],
   createdAt: faker.date.past(),
-  view: faker.datatype.number(),
-  comment: faker.datatype.number(),
+  // view: faker.datatype.number(),
   share: faker.datatype.number(),
   favorite: faker.datatype.number(),
   author: {

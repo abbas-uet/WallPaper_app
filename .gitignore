@@ -25,6 +25,10 @@ yarn-error.log*
 
 .eslintcache
 /.idea/.gitignore
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/wallPaper_app.iml
+/.idea/.gitignore
 /.idea/jsLibraryMappings.xml
 /.idea/misc.xml
 /.idea/modules.xml
