@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // @mui
-import { MenuItem, TextField } from '@mui/material';
+import { Box, FormControl, MenuItem, Select, TextField } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -9,14 +9,18 @@ BlogPostsSort.propTypes = {
   onSort: PropTypes.func,
 };
 
-export default function BlogPostsSort({ options, onSort }) {
+export default function BlogPostsSort({ options, onSort, selected }) {
   return (
-    <TextField select size="small" value="latest" onChange={onSort}>
-      {options.map((option) => (
-        <MenuItem key={option.value} value={option.value}>
-          {option.label}
-        </MenuItem>
-      ))}
-    </TextField>
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <Select id="demo-simple-select" value={selected} onChange={(newVal) => onSort(newVal.target.value)}>
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }
