@@ -61,11 +61,7 @@ export default function BlogPostCard({ post, index }) {
   const latestPostLarge = index === 0;
   const latestPost = index === 1 || index === 2;
 
-  const POST_INFO = [
-    { number: comment, icon: 'eva:message-circle-fill' },
-    { number: view, icon: 'eva:eye-fill' },
-    { number: share, icon: 'eva:share-fill' },
-  ];
+  const POST_INFO = [{ number: view, icon: 'eva:eye-fill' }];
 
   return (
     <Grid item xs={12} sm={latestPostLarge ? 12 : 6} md={latestPostLarge ? 6 : 3}>
@@ -80,7 +76,6 @@ export default function BlogPostCard({ post, index }) {
                 width: '100%',
                 height: '100%',
                 position: 'absolute',
-                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
               },
             }),
             ...(latestPostLarge && {
@@ -97,27 +92,12 @@ export default function BlogPostCard({ post, index }) {
             sx={{
               width: 80,
               height: 36,
-              zIndex: 9,
               bottom: -15,
               position: 'absolute',
               color: 'background.paper',
               ...((latestPostLarge || latestPost) && { display: 'none' }),
             }}
           />
-          <StyledAvatar
-            alt={author.name}
-            src={author.avatarUrl}
-            sx={{
-              ...((latestPostLarge || latestPost) && {
-                zIndex: 9,
-                top: 24,
-                left: 24,
-                width: 40,
-                height: 40,
-              }),
-            }}
-          />
-
           <StyledCover alt={title} src={cover} />
         </StyledCardMedia>
 

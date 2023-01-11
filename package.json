@@ -38,6 +38,7 @@
     ]
   },
   "dependencies": {
+    "date-array-sorting" : "^1.0.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@faker-js/faker": "^7.6.0",
