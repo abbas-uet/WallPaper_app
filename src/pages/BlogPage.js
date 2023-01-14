@@ -29,32 +29,32 @@ const SORT_OPTIONS = [
 
 // ----------------------------------------------------------------------
 
-function favoriteComparater(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
+function favoriteComparater(a, b) {
+  if (b.favorite < a.favorite) {
     return -1;
   }
-  if (b[orderBy] < a[orderBy]) {
+  if (b.favorite < a.favorite) {
     return 1;
   }
   return 0;
 }
 function descendingComparator(a, b, orderBy) {
-  console.log(a);
-  if (Date.parse(b[orderBy]) < Date.parse(a[orderBy])) {
+  if (b[orderBy] < a[orderBy]) {
     return -1;
   }
-  if (Date.parse(b[orderBy]) < Date.parse(a[orderBy])) {
+  if (b[orderBy] < a[orderBy]) {
     return 1;
   }
   return 0;
 }
 
 function getComparator(orderBy) {
+  console.log(orderBy);
   return orderBy === 'latest'
     ? (a, b) => descendingComparator(a, b, 'createdAt')
     : orderBy === 'oldest'
     ? (a, b) => -descendingComparator(a, b, 'createdAt')
-    : (a, b) => favoriteComparater(a, b, 'favorite');
+    : (a, b) => favoriteComparater(a, b);
 }
 
 function applySortFilter(array, comparator, query) {
@@ -64,7 +64,6 @@ function applySortFilter(array, comparator, query) {
     if (order !== 0) return order;
     return a[1] - b[1];
   });
-  console.log(array);
   if (query) {
     return filter(array, (_user) => _user.title.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }
@@ -77,6 +76,7 @@ export default function BlogPage({ pName }) {
   const [filterName, setFilterName] = useState('');
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
   //
   // const handleRequestSort = (event, property) => {
   //   const isAsc = orderBy === property && order === 'asc';
@@ -114,7 +114,7 @@ export default function BlogPage({ pName }) {
   };
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - POSTS.length) : 0;
-  const filteredUsers = applySortFilter(POSTS, getComparator(), filterName);
+  const filteredUsers = applySortFilter(POSTS, getComparator(orderBy), filterName);
 
   const isNotFound = !filteredUsers.length && !!filterName;
   return (
